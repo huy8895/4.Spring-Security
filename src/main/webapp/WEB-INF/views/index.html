@@ -12,6 +12,7 @@
     Welcome !
     <!-- Print the logged in user name -->
     <div sec:authorize="isAuthenticated()">
+        hello
         <span sec:authentication="principal.username"></span>
     </div>
 </h3>
