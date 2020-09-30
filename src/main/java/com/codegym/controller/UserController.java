@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-    @GetMapping("/")
+    @GetMapping("/*")
     public String index() {
         return "index";
     }
@@ -27,5 +27,11 @@ public class UserController {
         SecurityContext context = SecurityContextHolder.getContext();
         System.out.println(context.getAuthentication().getName());
         return "admin";
+    }
+
+    @GetMapping("/news")
+    public String news(Principal principal){
+        System.out.println(principal.getName());
+        return "news";
     }
 }
