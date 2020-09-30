@@ -3,6 +3,7 @@ package com.codegym.controller;
 import java.security.Principal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -30,8 +31,15 @@ public class UserController {
     }
 
     @GetMapping("/news")
-    public String news(Principal principal){
-        System.out.println(principal.getName());
+    public String news(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            UserDetails user = (UserDetails) principal;
+            System.out.println(user.getUsername());
+            user.getAuthorities().forEach(System.out::println);
+        } else {
+            String username = principal.toString();
+        }
         return "news";
     }
 }
