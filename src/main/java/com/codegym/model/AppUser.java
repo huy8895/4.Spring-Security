@@ -14,8 +14,11 @@ public class AppUser {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+//    @JoinColumn(name = "role_id")
     private AppRole myRole = new AppRole(2, "ROLE_USER");
+
+    public AppUser() {
+    }
 
     public void setId(Long id) {
         this.id = id;

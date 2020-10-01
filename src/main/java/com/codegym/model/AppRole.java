@@ -14,6 +14,8 @@ public class AppRole implements GrantedAuthority {
     private String name;
 
 
+    public AppRole() {
+    }
 
     public AppRole(long id, String name) {
         this.id = id;

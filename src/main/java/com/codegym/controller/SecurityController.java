@@ -42,6 +42,12 @@ public class SecurityController {
         return "admin";
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userPage(ModelMap model) {
+        model.addAttribute("user", getPrincipal());
+        return "user";
+    }
+
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());

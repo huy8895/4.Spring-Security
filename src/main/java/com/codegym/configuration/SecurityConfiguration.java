@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -37,6 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .usernameParameter("ssoId")
                 .passwordParameter("password")
 //                .and().csrf()
-                .and().exceptionHandling().accessDeniedPage("/Access_Denied");
+                .and().exceptionHandling().accessDeniedPage("/Access_Denied")
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
 }

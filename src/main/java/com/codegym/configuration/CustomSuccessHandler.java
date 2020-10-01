@@ -26,7 +26,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException {
         String targetUrl = determineTargetUrl(authentication);
-
+        System.out.println("targetUrl = " + targetUrl);
         if (response.isCommitted()) {
             System.out.println("Can't redirect");
             return;
@@ -48,12 +48,15 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         for (GrantedAuthority a : authorities) {
             roles.add(a.getAuthority());
+            System.out.println(a.getAuthority());
         }
 
         if (isAdmin(roles)) {
             url = "/admin";
+            System.out.println("go to /admin");
         } else if (isUser(roles)) {
             url = "/user";
+            System.out.println("go to /user");
         } else {
             url = "/accessDenied";
         }
