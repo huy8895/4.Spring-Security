@@ -37,6 +37,11 @@ public class UserController {
             UserDetails user = (UserDetails) principal;
             System.out.println(user.getUsername());
             user.getAuthorities().forEach(System.out::println);
+            System.out.println("user.isAccountNonExpired() = " + user.isAccountNonExpired());
+            System.out.println("user.getUsername() = " + user.getUsername());
+            System.out.println("user.getPassword() = " + user.getPassword());
+            System.out.println("user.isAccountNonLocked() = " + user.isAccountNonLocked());
+            System.out.println("user.isCredentialsNonExpired() = " + user.isCredentialsNonExpired());
         } else {
             String username = principal.toString();
         }
