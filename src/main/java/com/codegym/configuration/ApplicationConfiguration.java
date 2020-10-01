@@ -60,4 +60,9 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter implements
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
+
+    @Bean
+    public CustomSuccessHandler customSuccessHandler(){
+        return new CustomSuccessHandler();
+    }
 }
